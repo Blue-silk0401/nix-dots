@@ -133,7 +133,7 @@
     enable = true;
     ohMyZsh = {
       enable = true;
-      theme = "bira";
+      theme = "agnoster";
       plugins = [
         "git"
         "sudo"
@@ -148,6 +148,7 @@
   noto-fonts-color-emoji
   font-awesome
   ];
+  
 
   environment.variables = {
   EDITOR = "nvim";
