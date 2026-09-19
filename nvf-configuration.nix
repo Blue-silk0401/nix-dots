@@ -1,11 +1,11 @@
-{ pkgs, lib, ... }
+{ pkgs, lib, ... }:
 
 {
 	vim = {
 	  theme = {
 	  enable = true;
-	  name = "gruvbox";
-	  style = "dark";
+	  name = "tokyonight";
+	  style = "night";
 	  };
 
 	  statusline.lualine.enable = true;
@@ -13,11 +13,10 @@
 	  autocomplete.nvim-cmp.enable = true;
 
 	  languages = {
-	    enableLsp = true;
-	    enableTreesitter = true;
+	    enableTreesitter = true;	
 
 	    nix.enable = true;
-	    ts.enable = true;
+	    typescript.enable = true;
 	    rust.enable = true;
 	    python.enable = true;
 	  };

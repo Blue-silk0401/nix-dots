@@ -8,9 +8,20 @@
 			inputs.nixpkgs.follows = "nixpkgs";
 		};
 		nvf.url = "github:notashelf/nvf";
+
+		quickshell = {
+      			url = "git+https://git.outfoxxed.me/outfoxxed/quickshell";
+		        inputs.nixpkgs.follows = "nixpkgs";
+    		};
+
+    		qml-niri = {
+		        url = "github:imiric/qml-niri/main";
+		        inputs.nixpkgs.follows = "nixpkgs";
+		        inputs.quickshell.follows = "quickshell";
+    		};
 	};
   	
-	outputs = { self, nixpkgs, home-manager,nvf, ... }: 
+	outputs = { self, nixpkgs, home-manager, nvf, qml-niri, ... }: 
 		let
 			system = "x86_64-linux";
 		in {
@@ -27,6 +38,11 @@
 			./configuration.nix 
 			nvf.nixosModules.default
 			];
+			
+			specialArg = {
+			  inherit qml-niri;
+			};
+
     			};
 
 		homeConfiguration.amper = home-manager.lib.homeManagerConfiguration {

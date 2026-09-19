@@ -79,6 +79,7 @@
   waybar
   swayidle
   quickshell
+  qml-niri.packages.x86_64-linux.quickshell
   # fun aesthetics
   cmatrix
   cbonsai
