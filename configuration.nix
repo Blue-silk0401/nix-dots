@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, qml-niri, ... }:
 
 {
   imports =
@@ -64,84 +64,10 @@
   
 
   environment.systemPackages = with pkgs; [
-  vim # Do not forget to add an editor to edit configuration.nix!
-  wget
-  fastfetch
-  ghostty
-  eza          # modern ls replacement
-  bat          # modern cat replacement
-  zoxide       # smarter cd
-  pkgs.tmux         # terminal multiplexer
-  wlogout      # graphical logout menu
-  dunst        # notification daemon
-  hyprlock     # nicer lock screen
-  fuzzel
-  waybar
-  swayidle
-  quickshell
   qml-niri.packages.x86_64-linux.quickshell
-  # fun aesthetics
-  cmatrix
-  cbonsai
-  pipes-rs
-  #
-  wl-clipboard
-  grim
-  slurp
-  awww
-  yazi
-  xdg-user-dirs
-  mpvpaper
-  git
-  tealdeer
-  xclip
-  kitty
-  ffmpeg
-  swaybg
-  jp2a  
-  #Apps
-  gimp
-  mullvad-browser
-  #Tui's
-  cowsay
-  lolcat
-  fortune
-  btop
-  #zsh addtions
-  zsh-syntax-highlighting   # colors valid/invalid commands
-  zsh-autosuggestions       # ghost-text suggestions based on history
-  #things for lazy vim
-  tree-sitter
-  ripgrep
-  fd
-  gcc
-  unzip
-  nodejs
-  lua5_1 
-  fzf 
-  pyright
-  ruff
-  tree
-  xwayland-satellite
-  (python3.withPackages (ps: with ps; [
-      numpy
-      requests
-      pandas
-      tkinter
-    ]))
   ];
-  programs.zsh = {
-    enable = true;
-    ohMyZsh = {
-      enable = true;
-      theme = "agnoster";
-      plugins = [
-        "git"
-        "sudo"
-        "docker"
-        ];
-      };
-    };
+
+  programs.zsh.enable = true;
 
   fonts.packages = with pkgs; [
   nerd-fonts.jetbrains-mono
@@ -151,23 +77,6 @@
   ];
   
 
-  environment.variables = {
-  EDITOR = "nvim";
-  };
-
-  programs.neovim = {
-  enable = true;
-  defaultEditor = true;
-  vimAlias = true;
-  viAlias = true;
-  };
-
-  environment.shellAliases = {
-  ls = "eza --icons";
-  cat = "bat";
-  };
-
- 
   services.xserver.videoDrivers = [ "nvidia" ];
 
   hardware.nvidia = {

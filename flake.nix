@@ -24,31 +24,43 @@
 	outputs = { self, nixpkgs, home-manager, nvf, qml-niri, ... }: 
 		let
 			system = "x86_64-linux";
-		in {
 
-		packages.${system}.default = 
-		(nvf.lib.neovimConfiguration {
-			pkgs = nixpkgs.legacyPackages.${system};
-			modules = [ ./nvf-configuration.nix ];
-		}).neovim;
+			nvfNeovim = (nvf.lib.neovimConfiguration {
+ 			    pkgs = nixpkgs.legacyPackages.${system};
+ 			    modules = [ ./nvf-configuration.nix ];
+			  }).neovim;
+		in {
+			
+		packages.${system}.nvf = nvfNeovim;
 
 		nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
 			inherit system;
 			modules = [ 
 			./configuration.nix 
 			nvf.nixosModules.default
+
+			home-manager.nixosModules.home-manager
+
+    	              {
+		        home-manager.useGlobalPkgs = true;
+		        home-manager.useUserPackages = true;
+			
+			home-manager.extraSpecialArgs = {
+    			  inherit nvfNeovim;
+			};
+
+      			home-manager.users.tuser = import ./home.nix;
+    		       }
 			];
 			
-			specialArg = {
-			  inherit qml-niri;
+			specialArgs = {
+			  inherit qml-niri nvfNeovim;
+
 			};
 
     			};
 
-		homeConfiguration.amper = home-manager.lib.homeManagerConfiguration {
-			pkgs = nixpkgs.legacyPackages.${system};
-			modules = [ ./home.nix ];
 
   		};
-	};
+
 }
