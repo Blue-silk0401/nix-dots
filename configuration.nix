@@ -1,4 +1,4 @@
-{ config, pkgs, qml-niri, ... }:
+{ config, pkgs, qml-niri, amane, ... }:
 
 {
   imports =
@@ -65,6 +65,15 @@
 
   environment.systemPackages = with pkgs; [
   qml-niri.packages.x86_64-linux.quickshell
+  amane.packages.x86_64-linux.default
+  
+  prismlauncher
+
+  gst_all_1.gstreamer
+  gst_all_1.gst-plugins-base
+  gst_all_1.gst-plugins-good
+  gst_all_1.gst-plugins-bad
+  gst_all_1.gst-plugins-ugly
   ];
 
   programs.zsh.enable = true;
@@ -77,15 +86,16 @@
   ];
   
 
-  services.xserver.videoDrivers = [ "nvidia" ];
+    #services.xserver.videoDrivers = [ "nvidia" ];
+  services.xserver.videoDrivers = [ "modesetting" ];
 
-  hardware.nvidia = {
-  modesetting.enable = true;
-  powerManagement.enable = true;
-  open = true;
-  nvidiaSettings = true;
-  package = config.boot.kernelPackages.nvidiaPackages.stable;
-  };
+    #hardware.nvidia = {
+    #modesetting.enable = true;
+    #powerManagement.enable = true;
+    #open = true;
+    #nvidiaSettings = true;
+    #package = config.boot.kernelPackages.nvidiaPackages.stable;
+    #};
 
   hardware.graphics.enable = true;
 
@@ -99,16 +109,20 @@
   programs.niri.enable = true;
 
 
-  services.greetd = {
-    enable = true;
-    settings = {
-      default_session = {
-	command = "${pkgs.tuigreet}/bin/tuigreet --time --cmd niri-session";
-	user = "greeter";
-      };
-    };
-  };
   
+  services.displayManager.sddm = {
+    enable = true;
+    wayland.enable = true;
+  };
+
+  programs.qylock = {
+    enable = true;
+
+    theme = "pixel-dusk-city";
+
+    sddm.enable = true;
+    quickshell.enable = true;
+  };
 
 
   xdg.portal = {

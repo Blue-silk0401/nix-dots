@@ -7,6 +7,8 @@
 			url = "github:nix-community/home-manager/release-26.05";
 			inputs.nixpkgs.follows = "nixpkgs";
 		};
+        amane.url = "github:MystiaFin/amane";
+
 		nvf.url = "github:notashelf/nvf";
 
 		quickshell = {
@@ -19,9 +21,11 @@
 		        inputs.nixpkgs.follows = "nixpkgs";
 		        inputs.quickshell.follows = "quickshell";
     		};
+
+                qylock.url = "github:Darkkal44/qylock";
 	};
   	
-	outputs = { self, nixpkgs, home-manager, nvf, qml-niri, ... }: 
+	outputs = { self, nixpkgs, home-manager, nvf, qml-niri, qylock, amane, ... }: 
 		let
 			system = "x86_64-linux";
 
@@ -38,6 +42,7 @@
 			modules = [ 
 			./configuration.nix 
 			nvf.nixosModules.default
+                        qylock.nixosModules.default
 
 			home-manager.nixosModules.home-manager
 
@@ -54,7 +59,7 @@
 			];
 			
 			specialArgs = {
-			  inherit qml-niri nvfNeovim;
+			  inherit amane qml-niri nvfNeovim;
 
 			};
 

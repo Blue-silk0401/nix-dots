@@ -12,30 +12,40 @@
     bat
     zoxide
     tmux
-    cmatrix
-    cbonsai
-    pipes-rs
     wl-clipboard
     yazi
     git
     tealdeer
     ghostty
+    kitty
     jp2a
     gimp
     mullvad-browser
+    nvfNeovim
+    foliate
+    calibre
+    persepolis 
+
+    # Tui's and Fun
     cowsay
     lolcat
     fortune
     btop
     tree
+    pipes-rs
+    cbonsai
+    cmatrix
     fzf
-    nvfNeovim
 
     gcc
     unzip
     nodejs
     lua5_1
     tree-sitter
+    python3
+    uv
+    libGL
+    SDL2
 
     wlogout
     hyprlock
@@ -48,6 +58,9 @@
     mpvpaper
     swaybg
     xwayland-satellite
+
+    mpv
+    imv
 
     librewolf
 
