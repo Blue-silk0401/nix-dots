@@ -70,6 +70,16 @@
     xdg-user-dirs
   ];
 
+    imports = [
+    ./modules/zsh.nix
+    ./modules/ghostty.nix
+    ./modules/fastfetch.nix
+  ];
+
+  # Keep your other settings here.
+    
+
+
   home.sessionVariables = {
     EDITOR = "nvim";
     VISUAL = "nvim";
