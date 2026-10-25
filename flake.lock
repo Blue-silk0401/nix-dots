@@ -5,11 +5,11 @@
         "nixpkgs": "nixpkgs"
       },
       "locked": {
-        "lastModified": 1791437618,
-        "narHash": "sha256-bjJ5K6EEeo8UA97DemyaLLEaLQdNgi0U18in1slP/IM=",
+        "lastModified": 1792598840,
+        "narHash": "sha256-fU20wtIC9wlOP9mvcCboSdB67zVq2ZSe9FjD7mwyHMc=",
         "owner": "MystiaFin",
         "repo": "amane",
-        "rev": "7cf5fac4a98a13ca7098766b9118806073f57952",
+        "rev": "544cbfc23af37f84ac237cd9bec53173981772b3",
         "type": "github"
       },
       "original": {

@@ -399,11 +399,11 @@ binds {
 
     // Suggested binds for running programs: terminal, app launcher, screen locker.
     Mod+T hotkey-overlay-title="Open a Terminal: ghostty" { spawn "ghostty"; }
-    Mod+D { spawn "amane Luancher" "ipc" "call" "launcher"; }
-    Mod+Alt+L { spawn "amane lock" "ipc" "call" "lock"; }
-    Mod+A { spawn "amane-Panel" "ipc" "call" "panel"; }
-    Mod+Shift+P { spawn "amane Locks Menu" "ipc" "call" "power"; }
-    Mod+W { spawn "amane-Wallpaper" "ipc" "call" "wallpaper"; }
+    Mod+D { spawn "amane" "ipc" "call" "launcher"; }
+    Mod+Alt+L { spawn "amane" "ipc" "call" "lock"; }
+    Mod+A { spawn "amane" "ipc" "call" "panel"; }
+    Mod+Shift+P { spawn "amane" "ipc" "call" "power"; }
+    Mod+W { spawn "amane" "ipc" "call" "wallpaper"; }
     Mod+Ctrl+V { spawn-sh "amane ipc call clipboard"; }
 
     // Use spawn-sh to run a shell command. Do this if you need pipes, multiple commands, etc.

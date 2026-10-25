@@ -105,10 +105,23 @@
 
   hardware.graphics.enable = true;
 
+  # a second boot entry for the home desktop with the RTX 4060; the normal entry works on any machine
+  specialisation.nvidia.configuration = {
+    services.xserver.videoDrivers = pkgs.lib.mkForce [ "nvidia" ];
+
+    hardware.nvidia = {
+      modesetting.enable = true;
+      open = true;
+      nvidiaSettings = true;
+      package = config.boot.kernelPackages.nvidiaPackages.stable;
+    };
+
+    environment.sessionVariables.__GLX_VENDOR_LIBRARY_NAME = "nvidia";
+
+    environment.systemPackages = [ config.hardware.nvidia.package.bin ];
+  };
+
   environment.sessionVariables = {
-  LIBVA_DRIVER_NAME = "nvidia";
-  GBM_BACKEND = "nvidia-drm";
-  __GLX_VENDOR_LIBRARY_NAME = "nvidia";
   };
 
 
