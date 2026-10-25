@@ -13,9 +13,9 @@
     zoxide
     tmux
     wl-clipboard
+    cliphist
     yazi
     git
-    tealdeer
     ghostty
     kitty
     jp2a
@@ -24,7 +24,10 @@
     nvfNeovim
     foliate
     calibre
-    persepolis 
+    persepolis
+
+    yt-dlp
+    ffmpeg
 
     # Tui's and Fun
     cowsay
@@ -35,6 +38,8 @@
     pipes-rs
     cbonsai
     cmatrix
+    cava
+    cliamp
     fzf
 
     gcc
@@ -47,6 +52,8 @@
     libGL
     SDL2
 
+    libnotify
+
     wlogout
     hyprlock
     fuzzel
@@ -57,10 +64,12 @@
     awww
     mpvpaper
     swaybg
+    imagemagick
     xwayland-satellite
 
     mpv
     imv
+    playerctl
 
     librewolf
 
@@ -74,6 +83,7 @@
     ./modules/zsh.nix
     ./modules/ghostty.nix
     ./modules/fastfetch.nix
+    ./modules/niri.nix
   ];
 
   # Keep your other settings here.

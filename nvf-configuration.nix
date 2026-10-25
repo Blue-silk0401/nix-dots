@@ -6,9 +6,13 @@
         shiftwidth = 4;
         softtabstop = 4;
         expandtab = true;
+
+        # Uses system clipboard
+        clipboard = "unnamedplus";
         };
 
 	vim = {
+	  luaConfigRC.amane = lib.nvim.dag.entryAnywhere (builtins.readFile ./nvf-amane.lua);
 	  theme = {
 	  enable = true;
 	  name = "tokyonight";

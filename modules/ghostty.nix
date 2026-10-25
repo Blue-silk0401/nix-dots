@@ -1,4 +1,56 @@
+{ ... }:
+
 {
-  home.file.".config/ghostty/config.ghostty".source =
-    ../configs/ghostty/config.ghostty;
+  programs.ghostty = {
+    enable = true;
+
+    settings = {
+      shell-integration-features = "no-cursor";
+      window-show-tab-bar = "never";
+
+      gtk-titlebar = false;
+      gtk-wide-tabs = false;
+
+      # Sakura theme
+      background = "#0c0814";
+      foreground = "#e8d8e0";
+      cursor-color = "#e890a8";
+      selection-background = "#2a1030";
+      selection-foreground = "#f0e0ea";
+
+      palette = [
+        "0=#0c0814"
+        "1=#c86080"
+        "2=#78a87c"
+        "3=#c8a870"
+        "4=#6878b0"
+        "5=#b070a0"
+        "6=#6898a0"
+        "7=#e8d8e0"
+        "8=#281830"
+        "9=#e07898"
+        "10=#90c094"
+        "11=#e0c088"
+        "12=#8098d0"
+        "13=#d088b8"
+        "14=#80b0b8"
+        "15=#f8f0f4"
+      ];
+
+      font-size = 10;
+
+      background-opacity = 0.85;
+      background-blur = true;
+      minimum-contrast = 1.05;
+
+      cursor-style = "block";
+      cursor-style-blink = true;
+
+      window-padding-x = 10;
+      window-padding-y = 10;
+
+      # colors written by amane from the wallpaper
+      config-file = "?/home/tuser/.config/ghostty/amane-colors";
+    };
+  };
 }

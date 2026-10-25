@@ -1,15 +1,30 @@
-{ config, pkgs, ... }:
-
 {
   programs.zsh = {
     enable = true;
 
+    oh-my-zsh = {
+      enable = true;
+      theme = "agnoster";
+
+      plugins = [
+        "git"
+        "sudo"
+        "docker"
+      ];
+    };
+
+    shellAliases = {
+      ll = "ls -lah";
+      ls = "eza --icons";
+      cat = "bat";
+      v = "nvim";
+      c = "clear";
+      ".." = "cd ..";
+      "..." = "cd ../..";
+    };
+
     initContent = ''
       fastfetch
-
-      # Your custom Zsh commands go here.
-      alias ll="ls -lah"
-      alias rebuild="home-manager switch"
     '';
   };
 }

@@ -1,10 +1,14 @@
-{ config, pkgs, qml-niri, amane, ... }:
+{ config, pkgs, amane, ... }:
 
 {
   imports =
     [
-      ./hardware-configuration.nix
-    ];
+        ./hardware-configuration.nix
+
+  ];
+
+  programs.niri.enable = true;
+    
 
  
   boot.loader.systemd-boot.enable = true;
@@ -50,7 +54,7 @@
   users.users.tuser = {
     isNormalUser = true;
     description = "Black_silence";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [ "networkmanager" "wheel" "i2c" ];
     packages = with pkgs; [];
     shell = pkgs.zsh;
   };
@@ -62,12 +66,14 @@
     { device = "/swapfile"; size = 8192; } # size in MB, should be >= RAM amount
   ];
   
+    # to be able to use backlight with amane shell
+    hardware.i2c.enable = true;
+
 
   environment.systemPackages = with pkgs; [
-  qml-niri.packages.x86_64-linux.quickshell
   amane.packages.x86_64-linux.default
   
-  prismlauncher
+  ddcutil
 
   gst_all_1.gstreamer
   gst_all_1.gst-plugins-base
@@ -105,8 +111,6 @@
   __GLX_VENDOR_LIBRARY_NAME = "nvidia";
   };
 
-
-  programs.niri.enable = true;
 
 
   
